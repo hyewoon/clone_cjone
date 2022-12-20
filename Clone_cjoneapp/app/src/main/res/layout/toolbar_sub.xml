@@ -27,7 +27,7 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginEnd="10dp"
                 android:layout_marginBottom="10dp"
-                android:src="@drawable/cj_logo" />
+                android:src="@drawable/logo" />
             <TextView
                 android:id="@+id/tv_point"
                 android:layout_toRightOf="@id/imgv_logo"

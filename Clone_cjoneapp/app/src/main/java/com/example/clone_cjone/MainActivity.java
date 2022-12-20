@@ -1,6 +1,7 @@
 package com.example.clone_cjone;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -16,6 +17,10 @@ import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import com.example.clone_cjone.Event.EventActivity;
+import com.example.clone_cjone.Giftcard.CafeFragment;
+import com.example.clone_cjone.Giftcard.CgvFragment;
+import com.example.clone_cjone.Giftcard.CjFragment;
+import com.example.clone_cjone.Giftcard.OliveyoungFragment;
 import com.example.clone_cjone.barcode.BarcodeActivity;
 import com.google.android.material.tabs.TabLayout;
 
@@ -27,9 +32,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     FrameLayout frame_back;
     LinearLayout ln_event, ln_fun_town, ln_finance;
     TabLayout tab_layout;
+    Fragment frame;
 
     int cnt = 0;
-    int position = 0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -93,12 +98,24 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         tab_layout.addTab(tab_layout.newTab().setText("올리브영"));
         tab_layout.addTab(tab_layout.newTab().setText("CJ외식"));
 
-        //tab 선택시 fragment 연결
-        tab_layout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+        getSupportFragmentManager().beginTransaction().replace(R.id.frame_cj,new CjFragment()).commit();
+
+        tab_layout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
-                Log.d("로그", "onTabSelected: " + "텝");
-                getSupportFragmentManager().beginTransaction().replace(R.id.container,new CjFragment()).commit();
+               int position = tab.getPosition();
+                if(position == 0){
+                    Log.d("로그", "onTabSelected: " + position);
+                    getSupportFragmentManager().beginTransaction().replace(R.id.frame_cj,new CjFragment()).commit();
+                }else if(position ==1){
+                    getSupportFragmentManager().beginTransaction().replace(R.id.frame_cj,new CgvFragment()).commit();
+                }else if(position ==2){
+                    getSupportFragmentManager().beginTransaction().replace(R.id.frame_cj,new OliveyoungFragment()).commit();
+                }else if(position ==3){
+                    getSupportFragmentManager().beginTransaction().replace(R.id.frame_cj,new CafeFragment()).commit();
+                }
+
+
             }
 
             @Override
@@ -111,6 +128,36 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
             }
         });
+
+   /*     //tab 선택시 fragment 연결
+        tab_layout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
+                position = tab_layout.getSelectedTabPosition();
+
+                if(position == 0){
+                    Log.d("로그", "onTabSelected: " + position);
+                    getSupportFragmentManager().beginTransaction().replace(R.id.frame_cj,new CjFragment()).commit();
+                }else if(position ==1){
+                    getSupportFragmentManager().beginTransaction().replace(R.id.frame_cgv,new CgvFragment()).commit();
+                }else if(position ==2){
+                    getSupportFragmentManager().beginTransaction().replace(R.id.frame_oliveyoung,new OliveyoungFragment()).commit();
+                }else if(position ==3){
+                    getSupportFragmentManager().beginTransaction().replace(R.id.frame_back,new CafeFragment()).commit();
+                }
+
+
+            }
+
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
+            }
+
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
+
+            }
+        });*/
 
         //배경화면은 id값 없으니까 고정값을 주려면 getTag()로 지정해서 가지고 온다
         frame_back.setOnClickListener(new View.OnClickListener() {
