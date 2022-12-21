@@ -4,8 +4,8 @@ import java.io.Serializable;
 
 public class CgvDTO implements Serializable {
 
-   private int imgRes, rank;
-   private  String title, box_office;
+    private int imgRes, rank;
+    private String title, box_office;
 
     public CgvDTO(int imgRes, int rank, String title, String box_office) {
         this.imgRes = imgRes;

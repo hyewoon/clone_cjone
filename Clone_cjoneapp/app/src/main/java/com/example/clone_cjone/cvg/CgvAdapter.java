@@ -17,35 +17,31 @@ import java.util.ArrayList;
 public class CgvAdapter  extends RecyclerView.Adapter<CgvAdapter.CViewHolder> {
 
     LayoutInflater inflater;
-/*    ArrayList<CgvDTO> list1;
-    private Context context;*/
-
-    public CgvAdapter(LayoutInflater inflater) {
-        this.inflater = inflater;
-    }
+    ArrayList<CgvDTO> list1;
+  //  private Context context;
 
 
-    /* public CgvAdapter(LayoutInflater inflater, ArrayList<CgvDTO> list1, Context context) {
+
+    public CgvAdapter(LayoutInflater inflater, ArrayList<CgvDTO> list1) {
         this.inflater = inflater;
         this.list1 = list1;
-        this.context = context;
     }
-*/
+
 
     @NonNull
     @Override
     public CViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View v = inflater.inflate(R.layout.item_recv_cgv,parent,false);
+        View v = (ViewGroup)inflater.inflate(R.layout.item_recv_cgv,parent,false);
         CViewHolder viewHolder =new CViewHolder(v);
         return viewHolder;
     }
 
     @Override
     public void onBindViewHolder(@NonNull CViewHolder h, int p) {
-       /* h.imgv_poster.setImageResource(list1.get(p).getImgRes());
+        h.imgv_poster.setImageResource(list1.get(p).getImgRes());
         h.tv_rank.setText(list1.get(p).getRank());
         h.tv_title.setText(list1.get(p).getTitle());
-        h.tv_ticket.setText(list1.get(p).getBox_office());*/
+        h.tv_ticket.setText(list1.get(p).getBox_office());
     }
 
     @Override
