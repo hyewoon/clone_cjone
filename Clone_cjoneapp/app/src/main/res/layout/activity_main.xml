@@ -696,44 +696,22 @@
             </com.google.android.material.tabs.TabLayout>
 
             <FrameLayout
-                android:scaleX="@android:integer/config_longAnimTime"
-                android:id="@+id/frame_cj"
+                android:id="@+id/frame_giftcard"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"/>
+
+          <!--  <FrameLayout
+
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
-                android:orientation="vertical">
-            </FrameLayout>
-            <!--<FrameLayout
-                android:scaleX="@android:integer/config_longAnimTime"
-                android:id="@+id/frame_cgv"
-                android:layout_width="match_parent"
-                android:layout_height="200dp"
-                android:orientation="vertical">
-            </FrameLayout>
-
-            <FrameLayout
-                android:scaleX="@android:integer/config_longAnimTime"
-                android:id="@+id/frame_oliveyoung"
-                android:layout_width="match_parent"
-                android:layout_height="200dp"
-                android:orientation="vertical">
-            </FrameLayout>
-
-            <FrameLayout
-                android:scaleX="@android:integer/config_longAnimTime"
-                android:id="@+id/frame_cafe"
-                android:layout_width="match_parent"
-                android:layout_height="200dp"
-                android:orientation="vertical">
-            </FrameLayout>-->
-
-
+                android:orientation="vertical"
+                android:scaleX="@android:integer/config_longAnimTime"/>
+-->
         </LinearLayout>
 
 
 
         <!--cjone 문화타운: 배경 흐리게-->
-
-
 
 
 <!--            <TextView-->

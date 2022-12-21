@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     FrameLayout frame_back;
     LinearLayout ln_event, ln_fun_town, ln_finance;
     TabLayout tab_layout;
-    Fragment frame;
+    Fragment frame_giftcard, frag_menu;
 
     int cnt = 0;
     @Override
@@ -52,15 +52,23 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         ln_finance = findViewById(R.id.ln_finance);
         frame_back = findViewById(R.id.frame_back);
 
+        
 
     //클릭이벤트
         imgv_barcode.setOnClickListener(this);
         imgv_alarm.setOnClickListener(this);
         rl_logo.setOnClickListener(this);
-        imgv_menu.setOnClickListener(this);
         ln_event.setOnClickListener(this);
         ln_fun_town.setOnClickListener(this);
         ln_finance.setOnClickListener(this);
+
+        //메뉴아이콘 클릭시 설정창 연결
+        imgv_menu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getSupportFragmentManager().beginTransaction().replace(R.id.container,new MenuFragment()).commit();
+            }
+        });
 
        // 버튼 클릭시 이미지 전환
         imgv_nextbar.setOnClickListener(new View.OnClickListener() {
@@ -98,7 +106,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         tab_layout.addTab(tab_layout.newTab().setText("올리브영"));
         tab_layout.addTab(tab_layout.newTab().setText("CJ외식"));
 
-        getSupportFragmentManager().beginTransaction().replace(R.id.frame_cj,new CjFragment()).commit();
+        getSupportFragmentManager().beginTransaction().replace(R.id.frame_giftcard,new CjFragment()).commit();
 
         tab_layout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
@@ -106,26 +114,23 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                int position = tab.getPosition();
                 if(position == 0){
                     Log.d("로그", "onTabSelected: " + position);
-                    getSupportFragmentManager().beginTransaction().replace(R.id.frame_cj,new CjFragment()).commit();
+                    getSupportFragmentManager().beginTransaction().replace(R.id.frame_giftcard,new CjFragment()).commit();
                 }else if(position ==1){
-                    getSupportFragmentManager().beginTransaction().replace(R.id.frame_cj,new CgvFragment()).commit();
+                    getSupportFragmentManager().beginTransaction().replace(R.id.frame_giftcard,new CgvFragment()).commit();
                 }else if(position ==2){
-                    getSupportFragmentManager().beginTransaction().replace(R.id.frame_cj,new OliveyoungFragment()).commit();
+                    getSupportFragmentManager().beginTransaction().replace(R.id.frame_giftcard,new OliveyoungFragment()).commit();
                 }else if(position ==3){
-                    getSupportFragmentManager().beginTransaction().replace(R.id.frame_cj,new CafeFragment()).commit();
+                    getSupportFragmentManager().beginTransaction().replace(R.id.frame_giftcard,new CafeFragment()).commit();
                 }
-
 
             }
 
             @Override
             public void onTabUnselected(TabLayout.Tab tab) {
-
             }
 
             @Override
             public void onTabReselected(TabLayout.Tab tab) {
-
             }
         });
 
@@ -164,7 +169,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             @Override
             public void onClick(View v) {
                 if(frame_back.getTag().toString().equals("1")){
-                    
                     Toast.makeText(MainActivity.this, "11", Toast.LENGTH_SHORT).show();
                 }else if(frame_back.getTag().toString().equals("2")){
                     Toast.makeText(MainActivity.this, "22", Toast.LENGTH_SHORT).show();
@@ -191,10 +195,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         }else if(v.getId() == R.id.imgv_alarm) {
             Activity activity = new AlarmActivity();
-            connActivity(activity);
-
-        }else if(v.getId() == R.id.imgv_menu){
-            Activity activity = new DetailActivity();
             connActivity(activity);
 
         }else if(v.getId() == R.id.ln_event){
