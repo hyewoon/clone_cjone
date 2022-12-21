@@ -6,10 +6,13 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.Adapter;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -21,8 +24,16 @@ import com.example.clone_cjone.Giftcard.CafeFragment;
 import com.example.clone_cjone.Giftcard.CgvFragment;
 import com.example.clone_cjone.Giftcard.CjFragment;
 import com.example.clone_cjone.Giftcard.OliveyoungFragment;
-import com.example.clone_cjone.barcode.BarcodeActivity;
+import com.example.clone_cjone.cvg.CgvAdapter;
+import com.example.clone_cjone.cvg.CgvDTO;
+import com.example.clone_cjone.menubar.BarcodeActivity;
+import com.example.clone_cjone.menubar.AlarmActivity;
+import com.example.clone_cjone.menubar.MenuActivity;
+import com.example.clone_cjone.menubar.MypointActivity;
 import com.google.android.material.tabs.TabLayout;
+
+import java.util.ArrayList;
+import java.util.zip.Inflater;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -33,6 +44,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     LinearLayout ln_event, ln_fun_town, ln_finance;
     TabLayout tab_layout;
     Fragment frame_giftcard, frag_menu;
+    LayoutInflater inflater;
+    ArrayList<CgvDTO> list1;
+    Context context;
+    int [] imgArr1 = {
+            R.drawable.movie1, R.drawable.movie2, R.drawable.movie3, R.drawable.movie4, R.drawable.movie5
+    };
 
     int cnt = 0;
     @Override
@@ -57,18 +74,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     //클릭이벤트
         imgv_barcode.setOnClickListener(this);
         imgv_alarm.setOnClickListener(this);
+        imgv_menu.setOnClickListener(this);
         rl_logo.setOnClickListener(this);
         ln_event.setOnClickListener(this);
         ln_fun_town.setOnClickListener(this);
         ln_finance.setOnClickListener(this);
 
-        //메뉴아이콘 클릭시 설정창 연결
-        imgv_menu.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                getSupportFragmentManager().beginTransaction().replace(R.id.container,new MenuFragment()).commit();
-            }
-        });
 
        // 버튼 클릭시 이미지 전환
         imgv_nextbar.setOnClickListener(new View.OnClickListener() {
@@ -93,11 +104,23 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 if(cnt>3) cnt= 0;
             }
         });
-
+/*
+        list1 = new ArrayList<>();
+        list1.add(new CgvDTO(imgArr1[0],1,"아바타-물의 길","예매율 84.22%"));
+        list1.add(new CgvDTO(imgArr1[1],2,"영웅","예매율 9.38%"));
+        list1.add(new CgvDTO(imgArr1[2],3,"올빼미","예매율 1.41%"));
+        list1.add(new CgvDTO(imgArr1[3],4,"오늘밤","예매율 1.34%"));
+        list1.add(new CgvDTO(imgArr1[4],5,"신비아파트","예매율 0.91%"));*/
 
         //리사이클러뷰, 어댑터 연결
         recv_cgv.setLayoutManager(new LinearLayoutManager(this,RecyclerView.HORIZONTAL,false));
-        recv_cgv.setAdapter(new CgvAdapter(getLayoutInflater()));
+       /* CgvAdapter adapter =new CgvAdapter(inflater,list1,context);*/
+       CgvAdapter adapter = new CgvAdapter(getLayoutInflater());
+        recv_cgv.setAdapter(adapter);
+
+        //리사이클러뷰: arraylist이용해서 값 담기
+
+
 
 
         //tab_layout 
@@ -105,7 +128,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         tab_layout.addTab(tab_layout.newTab().setText("CGV"));
         tab_layout.addTab(tab_layout.newTab().setText("올리브영"));
         tab_layout.addTab(tab_layout.newTab().setText("CJ외식"));
-
+        //메인액티비티 첫 화면에 보여야 한다
         getSupportFragmentManager().beginTransaction().replace(R.id.frame_giftcard,new CjFragment()).commit();
 
         tab_layout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
@@ -207,6 +230,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         }   else if(v.getId() == R.id.ln_finance) {
             Activity activity = new DetailActivity();
+            connActivity(activity);
+        } else  if(v.getId()== R.id.imgv_menu){
+            Activity activity = new MenuActivity();
             connActivity(activity);
         }
     }

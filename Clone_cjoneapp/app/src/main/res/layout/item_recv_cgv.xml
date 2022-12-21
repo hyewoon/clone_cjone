@@ -24,6 +24,7 @@
                 app:cardCornerRadius="15dp">
 
                 <ImageView
+                    android:id="@+id/imgv_poster"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_gravity="center"
@@ -39,6 +40,7 @@
                 android:orientation="horizontal">
 
                 <TextView
+                    android:id="@+id/tv_rank"
                     android:textColor="#000"
                     android:textStyle="bold"
                     android:layout_marginLeft="10dp"
@@ -48,6 +50,7 @@
                     android:text="1"/>
 
                 <TextView
+                    android:id="@+id/tv_title"
                     android:textColor="#000"
                     android:layout_weight="1"
                     android:layout_width="0dp"
@@ -58,6 +61,7 @@
 
 
             <TextView
+                android:id="@+id/tv_ticket"
                 android:paddingBottom="10dp"
                 android:textSize="10dp"
                 android:layout_marginLeft="27dp"

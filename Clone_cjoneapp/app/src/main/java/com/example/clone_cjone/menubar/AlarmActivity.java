@@ -1,13 +1,11 @@
-package com.example.clone_cjone;
+package com.example.clone_cjone.menubar;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.ImageView;
 
-import com.example.clone_cjone.barcode.BarcodeActivity;
+import com.example.clone_cjone.R;
 
 public class AlarmActivity extends AppCompatActivity {
 
