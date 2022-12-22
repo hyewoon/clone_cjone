@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".menubar.MypointActivity"
+    tools:context=".mypoint.MypointActivity"
     android:orientation="vertical">
 
     <LinearLayout
@@ -49,15 +49,126 @@
     </LinearLayout>
 
     <LinearLayout
+        android:background="#E5E8EC"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
+        <TextView
+            android:layout_margin="20dp"
+            android:textColor="#DD4B7C"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="ONE 포인트"/>
 
-
+        <TextView
+            android:gravity="center|end"
+            android:textSize="25dp"
+            android:layout_margin="20dp"
+            android:textColor="#DD4B7C"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="1,530P"/>
 
     </LinearLayout>
 
+        <LinearLayout
+            android:background="#E5E8EC"
+           android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
 
+            <LinearLayout
+                android:gravity="center"
+                android:layout_margin="20dp"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <TextView
+                    android:gravity="center"
+                    android:text="사용가능"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+                <TextView
+                    android:textColor="#3F3F40"
+                    android:gravity="center"
+                    android:text="1,530P"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+            </LinearLayout>
+            <LinearLayout
+                android:gravity="center"
+                android:layout_margin="20dp"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:gravity="center"
+                    android:text="가용예정"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+                <TextView
+                    android:textColor="#3F3F40"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="30P" />
+
+
+
+            </LinearLayout>
+            <LinearLayout
+                android:gravity="center"
+                android:layout_margin="20dp"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <TextView
+                    android:gravity="center"
+                    android:text="소멸예정"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+                <TextView
+                    android:textStyle="bold"
+                    android:textColor="#3F3F40"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="2P" />
+
+
+            </LinearLayout>
+        </LinearLayout>
+    <TextView
+      android:layout_margin="20dp"
+        android:textColor="#3F3F40"
+        android:text="온라인 쇼핑몰 포인트 받기 >"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+    <View
+        android:background="#D6D7D8"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"/>
+
+    <TextView
+        android:paddingTop="15dp"
+        android:paddingBottom="15dp"
+        android:background="#E5E8EC"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="최근 일주일 간 내역입니다."/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recv_mypoint"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
 
     </LinearLayout>

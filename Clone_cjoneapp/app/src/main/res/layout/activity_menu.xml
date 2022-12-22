@@ -51,24 +51,19 @@
                     android:layout_marginTop="10dp"
                     android:layout_width="30dp"
                     android:layout_height="30dp"/>
-                <ImageView
-                    android:layout_alignParentRight="true"
-                    android:id="@+id/setting"
-                    android:src="@drawable/ic_setting1"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginRight="20dp"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"/>
+
 
                 <ImageView
+
                     android:id="@+id/alarm"
                     android:layout_width="27dp"
                     android:layout_height="27dp"
+                    android:layout_alignParentRight="true"
                     android:layout_marginStart="10dp"
                     android:layout_marginTop="10dp"
                     android:layout_marginEnd="10dp"
+                    android:layout_marginRight="20dp"
                     android:layout_marginBottom="10dp"
-                    android:layout_toLeftOf="@id/setting"
                     android:src="@drawable/ic_alarm1" />
 
                 <ImageView
@@ -103,7 +98,7 @@
                     android:textColor="#303030"
                     android:textSize="18dp"
                     android:layout_marginRight="20dp"
-                    android:text="1,000P "
+                    android:text="1,530P "
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"/>
 
@@ -129,7 +124,7 @@
                         android:layout_width="60dp"
                         android:layout_height="40dp"
                         android:layout_gravity="center"
-                        android:src="@drawable/ic_setting1" />
+                        android:src="@drawable/my_one" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -149,19 +144,19 @@
                     android:layout_marginRight="12dp"
                     android:orientation="vertical">
 
+
                     <ImageView
                         android:layout_width="60dp"
                         android:layout_height="40dp"
                         android:layout_gravity="center"
-                        android:src="@drawable/ic_setting1" />
-
+                        android:src="@drawable/vip_one" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:textSize="13dp"
-                        android:text="나의 ONE" />
+                        android:text="vip 라운지" />
 
                 </LinearLayout>
 
@@ -178,7 +173,7 @@
                         android:layout_width="60dp"
                         android:layout_height="40dp"
                         android:layout_gravity="center"
-                        android:src="@drawable/ic_setting1" />
+                        android:src="@drawable/coupon_one" />
 
 
                     <TextView
@@ -186,7 +181,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:textSize="13dp"
-                        android:text="나의 ONE" />
+                        android:text="쿠폰" />
 
                 </LinearLayout>
 
@@ -204,14 +199,14 @@
                         android:layout_width="60dp"
                         android:layout_height="40dp"
                         android:layout_gravity="center"
-                        android:src="@drawable/ic_setting1" />
+                        android:src="@drawable/reward" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:textSize="13dp"
-                        android:text="나의 ONE" />
+                        android:text="포인트 " />
 
                 </LinearLayout>
             </LinearLayout>
@@ -234,14 +229,14 @@
                         android:layout_width="60dp"
                         android:layout_height="40dp"
                         android:layout_gravity="center"
-                        android:src="@drawable/ic_setting1" />
+                        android:src="@drawable/badge_one" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:textSize="13dp"
-                        android:text="나의 ONE" />
+                        android:text="뱃지원정대" />
 
                 </LinearLayout>
 
@@ -258,7 +253,7 @@
                         android:layout_width="60dp"
                         android:layout_height="40dp"
                         android:layout_gravity="center"
-                        android:src="@drawable/ic_setting1" />
+                        android:src="@drawable/roulet_one" />
 
 
                     <TextView
@@ -266,7 +261,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:textSize="13dp"
-                        android:text="나의 ONE" />
+                        android:text="매일룰렛" />
 
                 </LinearLayout>
 
@@ -283,7 +278,7 @@
                         android:layout_width="60dp"
                         android:layout_height="40dp"
                         android:layout_gravity="center"
-                        android:src="@drawable/ic_setting1" />
+                        android:src="@drawable/run_one" />
 
 
                     <TextView
@@ -291,7 +286,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:textSize="13dp"
-                        android:text="나의 ONE" />
+                        android:text="one 위크" />
 
                 </LinearLayout>
 
@@ -309,21 +304,21 @@
                         android:layout_width="60dp"
                         android:layout_height="40dp"
                         android:layout_gravity="center"
-                        android:src="@drawable/ic_setting1" />
+                        android:src="@drawable/furtune" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:textSize="13dp"
-                        android:text="나의 ONE" />
+                        android:text="운세one" />
 
                 </LinearLayout>
             </LinearLayout>
 
             <ImageView
                 android:scaleType="fitXY"
-                android:src="@drawable/menu_banner"
+                android:src="@drawable/banner_menu"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"/>
 

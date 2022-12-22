@@ -10,7 +10,7 @@ import android.view.ViewGroup;
 
 import com.example.clone_cjone.R;
 
-public class CafeFragment extends Fragment {
+public class FoodFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,

@@ -30,25 +30,30 @@ public class AlarmActivity extends AppCompatActivity implements View.OnClickList
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_alarm);
 
+        Intent intent = getIntent();
+
         recv_alarm =findViewById(R.id.recv_alarm);
         before= findViewById(R.id.before);
         home= findViewById(R.id.home);
         menu= findViewById(R.id.menu);
 
-        Intent intent = getIntent();
+        before.setOnClickListener(this);
+        home.setOnClickListener(this);
+        menu.setOnClickListener(this);
 
-     /*   recv_alarm = findViewById(R.id.recv_alarm);
+
+  /*     recv_alarm = findViewById(R.id.recv_alarm);
         recv_alarm.setLayoutManager(new LinearLayoutManager(this,RecyclerView.HORIZONTAL,false));
         AlarmAdapter adapter = new AlarmAdapter(getLayoutInflater());
         recv_alarm.setAdapter(adapter);*/
 
 
+        ArrayList<AlarmDTO> list_a= new AlarmList().alarm();
         LayoutInflater inflater = getLayoutInflater();
-        recv_alarm = findViewById(R.id.recv_alarm);
-        LinearLayoutManager manager = new LinearLayoutManager(this);
+        LinearLayoutManager manager = new LinearLayoutManager(this,RecyclerView.VERTICAL,false);
         recv_alarm.setLayoutManager(manager);
         recv_alarm.setHasFixedSize(true);
-        adapter = new AlarmAdapter(getLayoutInflater());
+        adapter = new AlarmAdapter(inflater,list_a);
         recv_alarm.setAdapter(adapter);
 
     }

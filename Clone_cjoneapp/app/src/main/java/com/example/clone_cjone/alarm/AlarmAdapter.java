@@ -10,13 +10,15 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.clone_cjone.R;
 
-import java.util.zip.Inflater;
+import java.util.ArrayList;
 
 public class AlarmAdapter extends RecyclerView.Adapter<AlarmAdapter.AViewHolder> {
     LayoutInflater inflater;
+    ArrayList<AlarmDTO> list_a;
 
-    public AlarmAdapter(LayoutInflater inflater) {
+    public AlarmAdapter(LayoutInflater inflater, ArrayList<AlarmDTO> list_a) {
         this.inflater = inflater;
+        this.list_a = list_a;
     }
 
     @NonNull
@@ -28,13 +30,26 @@ public class AlarmAdapter extends RecyclerView.Adapter<AlarmAdapter.AViewHolder>
     }
 
     @Override
-    public void onBindViewHolder(@NonNull AViewHolder holder, int position) {
+    public long getItemId(int position) {
+        return super.getItemId(position);
+    }
 
+    @Override
+    public int getItemViewType(int position) {
+        return super.getItemViewType(position);
+    }
+
+    @Override
+    public void onBindViewHolder(@NonNull AViewHolder h, int i) {
+        h.alarm_title.setText(list_a.get(i).getTitle());
+        h.content1.setText(list_a.get(i).getContent1());
+        h.content2.setText(list_a.get(i).getContent2());
+        h.alarm_time.setText(list_a.get(i).getTime());
     }
 
     @Override
     public int getItemCount() {
-        return 10;
+        return list_a.size();
     }
 
     public class AViewHolder extends RecyclerView.ViewHolder {

@@ -16,14 +16,13 @@ import java.util.ArrayList;
 public class CgvAdapter  extends RecyclerView.Adapter<CgvAdapter.CViewHolder> {
 
     LayoutInflater inflater;
-    ArrayList<CgvDTO> cgvDTOS;
+    ArrayList<CgvDTO> list;
 
-    public CgvAdapter(LayoutInflater inflater, ArrayList<CgvDTO> cgvDTOS) {
+    public CgvAdapter(LayoutInflater inflater, ArrayList<CgvDTO> list) {
         this.inflater = inflater;
-        this.cgvDTOS = cgvDTOS;
+        this.list = list;
+
     }
-
-
 
     @NonNull
     @Override
@@ -36,16 +35,16 @@ public class CgvAdapter  extends RecyclerView.Adapter<CgvAdapter.CViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull CViewHolder h, int p) {
 
-        h.imgv_poster.setImageResource(cgvDTOS.get(p).getImgRes());
-        h.tv_rank.setText(String.valueOf(cgvDTOS.get(p).getRank()));
-        h.tv_title.setText(cgvDTOS.get(p).getTitle());
-        h.tv_ticket.setText(cgvDTOS.get(p).getBox_office());
+        h.imgv_poster.setImageResource(list.get(p).getImgRes());
+        h.tv_rank.setText(String.valueOf(list.get(p).getRank()));
+        h.tv_title.setText(list.get(p).getTitle());
+        h.tv_ticket.setText(list.get(p).getBox_office());
 
     }
 
     @Override
     public int getItemCount() {
-        return cgvDTOS.size();
+        return list.size();
     }
 
     public class CViewHolder  extends RecyclerView.ViewHolder {
