@@ -1,4 +1,4 @@
-package com.example.clone_cjone.cvg;
+package com.example.clone_cjone.cgv;
 
 import java.io.Serializable;
 

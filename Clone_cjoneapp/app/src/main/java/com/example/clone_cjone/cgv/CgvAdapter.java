@@ -1,6 +1,5 @@
-package com.example.clone_cjone.cvg;
+package com.example.clone_cjone.cgv;
 
-import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,15 +16,13 @@ import java.util.ArrayList;
 public class CgvAdapter  extends RecyclerView.Adapter<CgvAdapter.CViewHolder> {
 
     LayoutInflater inflater;
-    ArrayList<CgvDTO> list1;
-  //  private Context context;
+    ArrayList<CgvDTO> cgvDTOS;
 
-
-
-    public CgvAdapter(LayoutInflater inflater, ArrayList<CgvDTO> list1) {
+    public CgvAdapter(LayoutInflater inflater, ArrayList<CgvDTO> cgvDTOS) {
         this.inflater = inflater;
-        this.list1 = list1;
+        this.cgvDTOS = cgvDTOS;
     }
+
 
 
     @NonNull
@@ -38,22 +35,23 @@ public class CgvAdapter  extends RecyclerView.Adapter<CgvAdapter.CViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull CViewHolder h, int p) {
-        h.imgv_poster.setImageResource(list1.get(p).getImgRes());
-        h.tv_rank.setText(list1.get(p).getRank());
-        h.tv_title.setText(list1.get(p).getTitle());
-        h.tv_ticket.setText(list1.get(p).getBox_office());
+
+        h.imgv_poster.setImageResource(cgvDTOS.get(p).getImgRes());
+        h.tv_rank.setText(String.valueOf(cgvDTOS.get(p).getRank()));
+        h.tv_title.setText(cgvDTOS.get(p).getTitle());
+        h.tv_ticket.setText(cgvDTOS.get(p).getBox_office());
+
     }
 
     @Override
     public int getItemCount() {
-        return 5;
+        return cgvDTOS.size();
     }
 
     public class CViewHolder  extends RecyclerView.ViewHolder {
 
         ImageView imgv_poster;
         TextView tv_rank, tv_title, tv_ticket;
-
 
         public CViewHolder(@NonNull View v) {
             super(v);

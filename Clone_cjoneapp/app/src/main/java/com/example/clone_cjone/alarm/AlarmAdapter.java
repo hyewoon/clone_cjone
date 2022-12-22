@@ -1,4 +1,4 @@
-package com.example.clone_cjone.menubar;
+package com.example.clone_cjone.alarm;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,16 +10,10 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.clone_cjone.R;
 
-import org.w3c.dom.Text;
-
-import java.util.ArrayList;
 import java.util.zip.Inflater;
 
 public class AlarmAdapter extends RecyclerView.Adapter<AlarmAdapter.AViewHolder> {
-
-   LayoutInflater inflater;
-
-
+    LayoutInflater inflater;
 
     public AlarmAdapter(LayoutInflater inflater) {
         this.inflater = inflater;
@@ -28,19 +22,9 @@ public class AlarmAdapter extends RecyclerView.Adapter<AlarmAdapter.AViewHolder>
     @NonNull
     @Override
     public AViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View v = inflater.inflate(R.layout.item_recv_alarm,parent,false);
+        View v =inflater.inflate(R.layout.item_recv_alarm, parent,false);
         AViewHolder viewHolder = new AViewHolder(v);
         return viewHolder;
-    }
-
-    @Override
-    public int getItemViewType(int position) {
-        return super.getItemViewType(position);
-    }
-
-    @Override
-    public long getItemId(int position) {
-        return super.getItemId(position);
     }
 
     @Override
@@ -50,7 +34,7 @@ public class AlarmAdapter extends RecyclerView.Adapter<AlarmAdapter.AViewHolder>
 
     @Override
     public int getItemCount() {
-        return 30;
+        return 10;
     }
 
     public class AViewHolder extends RecyclerView.ViewHolder {

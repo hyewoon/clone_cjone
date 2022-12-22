@@ -6,13 +6,11 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.Adapter;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -24,16 +22,16 @@ import com.example.clone_cjone.Giftcard.CafeFragment;
 import com.example.clone_cjone.Giftcard.CgvFragment;
 import com.example.clone_cjone.Giftcard.CjFragment;
 import com.example.clone_cjone.Giftcard.OliveyoungFragment;
-import com.example.clone_cjone.cvg.CgvAdapter;
-import com.example.clone_cjone.cvg.CgvDTO;
+import com.example.clone_cjone.cgv.CgvAdapter;
+import com.example.clone_cjone.cgv.CgvArrayList;
+import com.example.clone_cjone.cgv.CgvDTO;
 import com.example.clone_cjone.menubar.BarcodeActivity;
-import com.example.clone_cjone.menubar.AlarmActivity;
+import com.example.clone_cjone.alarm.AlarmActivity;
 import com.example.clone_cjone.menubar.MenuActivity;
 import com.example.clone_cjone.menubar.MypointActivity;
 import com.google.android.material.tabs.TabLayout;
 
 import java.util.ArrayList;
-import java.util.zip.Inflater;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -44,12 +42,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     LinearLayout ln_event, ln_fun_town, ln_finance;
     TabLayout tab_layout;
     Fragment frame_giftcard, frag_menu;
-    ArrayList<CgvDTO> list1;
     CgvAdapter adapter;
-
-    int [] imgArr1 = {
-            R.drawable.movie1, R.drawable.movie2, R.drawable.movie3, R.drawable.movie4, R.drawable.movie5
-    };
 
     int cnt = 0;
     @Override
@@ -69,8 +62,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         ln_finance = findViewById(R.id.ln_finance);
         frame_back = findViewById(R.id.frame_back);
 
-        
-
     //클릭이벤트
         imgv_barcode.setOnClickListener(this);
         imgv_alarm.setOnClickListener(this);
@@ -80,8 +71,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         ln_fun_town.setOnClickListener(this);
         ln_finance.setOnClickListener(this);
 
-
-       // 버튼 클릭시 이미지 전환
+        // 버튼 클릭시 이미지 전환
         imgv_nextbar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -105,38 +95,26 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }
         });
 
-    /*    list1 = new ArrayList<>();
-        list1.add(new CgvDTO(R.drawable.movie1,1,"아바타-물의 길","예매율 84.22%"));
-        list1.add(new CgvDTO(R.drawable.movie2,2,"영웅","예매율 9.38%"));
-        list1.add(new CgvDTO(R.drawable.movie3,3,"올빼미","예매율 1.41%"));
-        list1.add(new CgvDTO(R.drawable.movie4,4,"오늘밤","예매율 1.34%"));
-        list1.add(new CgvDTO(R.drawable.movie5,5,"신비아파트","예매율 0.91%"));*/
-
-
-        CgvDTO dto = new CgvDTO(R.drawable.movie1,1,"아바타","예매율 80%");
-            dto = new CgvDTO(R.drawable.movie1,2,"아바타2","예매율 80%");
-
-            list1 = new ArrayList<>();
-            list1.add(dto);
-
         //리사이클러뷰, 어댑터 연결
-      LayoutInflater inflater =getLayoutInflater();
-      recv_cgv= findViewById(R.id.recv_cgv);
-      LinearLayoutManager manager = new LinearLayoutManager(this,RecyclerView.HORIZONTAL,false);
-      recv_cgv.setLayoutManager(manager);
-      recv_cgv.setHasFixedSize(true);
-      adapter = new CgvAdapter(inflater,list1);
-      recv_cgv.setAdapter(adapter);
+        ArrayList<CgvDTO> list_c = new CgvArrayList().setList();
+        LayoutInflater inflater =getLayoutInflater();
+        recv_cgv= findViewById(R.id.recv_cgv);
+        LinearLayoutManager manager = new LinearLayoutManager(this,RecyclerView.HORIZONTAL,false);
+         recv_cgv.setLayoutManager(manager);
+         recv_cgv.setHasFixedSize(true);
+         adapter = new CgvAdapter(inflater,list_c);
+        recv_cgv.setAdapter(adapter);
+
+
+
+
    /*     recv_cgv.setLayoutManager(new LinearLayoutManager(this,RecyclerView.HORIZONTAL,false));
-       *//* CgvAdapter adapter =new CgvAdapter(inflater,list1,context);*//*
+       *//* CgvAdapter adapter =new CgvAdapter(getLayoutInflater());*//*
         adapter = new CgvAdapter(inflater,list1);
         recv_cgv.setAdapter(adapter);
         //리사이클러뷰: arraylist이용해서 값 담기
 */
-
-
-
-        //tab_layout 
+        //tab_layout
         tab_layout.addTab(tab_layout.newTab().setText("CJ"));
         tab_layout.addTab(tab_layout.newTab().setText("CGV"));
         tab_layout.addTab(tab_layout.newTab().setText("올리브영"));

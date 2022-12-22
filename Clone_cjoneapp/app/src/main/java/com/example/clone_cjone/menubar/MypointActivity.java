@@ -39,6 +39,9 @@ public class MypointActivity extends AppCompatActivity implements View.OnClickLi
 
         }else if(v.getId() == R.id.home){
             onBackPressed();
+        }else if(v.getId() == R.id.menu){
+            Intent intent =new Intent(MypointActivity.this, MenuActivity.class);
+            startActivity(intent);
         }
 
     }
