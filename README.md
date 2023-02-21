@@ -1,2 +1,2 @@
-# clone_cjone
-clone_cjone
+# CJONE_app clone project
+android, java
