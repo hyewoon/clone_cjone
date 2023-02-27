@@ -1,2 +1,2 @@
-# CJONE_app 클론 프로젝트입니다.
-android, java
+# CJONE 안드로이드 앱 클론 코딩 프로젝트입니다.
+
