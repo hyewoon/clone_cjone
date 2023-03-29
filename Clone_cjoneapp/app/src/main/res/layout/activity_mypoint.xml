@@ -63,6 +63,7 @@
             android:text="ONE 포인트"/>
 
         <TextView
+            android:id="@+id/mypoint_point"
             android:gravity="center|end"
             android:textSize="25dp"
             android:layout_margin="20dp"

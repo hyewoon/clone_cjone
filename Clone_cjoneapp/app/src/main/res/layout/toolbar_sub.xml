@@ -30,7 +30,7 @@
                 android:src="@drawable/logo" />
             <TextView
                 android:textColor="#2A2B2B"
-                android:id="@+id/tv_point"
+                android:id="@+id/tv_main_point"
                 android:layout_toRightOf="@id/imgv_logo"
                 android:layout_marginTop="15dp"
                 android:text="1,530P"

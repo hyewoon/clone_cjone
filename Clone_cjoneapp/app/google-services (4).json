@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1035253063113",
+    "project_id": "cjone-b417a",
+    "storage_bucket": "cjone-b417a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1035253063113:android:134ad08861ea7107dc9c18",
+        "android_client_info": {
+          "package_name": "com.example.clone_cjone"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1035253063113-spk0kovr7brafkqsosiponothmbchk2e.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCSldDKT7iFgti4VSzC6pME0tNzGYQ0qFI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1035253063113-spk0kovr7brafkqsosiponothmbchk2e.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

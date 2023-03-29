@@ -95,6 +95,7 @@
                     android:layout_height="wrap_content"/>
 
                 <TextView
+                    android:id="@+id/menu_point"
                     android:textColor="#303030"
                     android:textSize="18dp"
                     android:layout_marginRight="20dp"

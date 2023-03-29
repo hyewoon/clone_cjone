@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -14,7 +15,9 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.Toolbar;
 
 import com.example.clone_cjone.Giftcard.FoodFragment;
 import com.example.clone_cjone.Giftcard.CgvFragment;
@@ -34,31 +37,49 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     RecyclerView recv_cgv;
-    ImageView imgv_barcode, imgv_alarm,imgv_menu, imgv_nextbar;
+    ImageView imgv_barcode, imgv_alarm,imgv_menu, imgv_nextbar, imgv_logo;
     RelativeLayout rl_logo;
     FrameLayout frame_back;
-    LinearLayout ln_event, ln_fun_town, ln_finance;
+    LinearLayout ln_event, ln_fun_town, ln_finance, click_ad1, click_ad2, click_ad3;
     TabLayout tab_layout;
     CgvAdapter adapter;
+    TextView tv_main_point;
+    Toolbar toolbar;
+
+    SharedPreferences pref;  // 프리퍼런스
+    SharedPreferences.Editor editor;  //에디터
+
 
     int cnt =0;
+    int point = 1000; //포인트 저장
+    int total_point = 0;
+    int no1= 0;
+    int no2 =0;
+    int no3=0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+    tv_main_point = findViewById(R.id.tv_main_point);    
     recv_cgv = findViewById(R.id.recv_cgv);
     imgv_barcode = findViewById(R.id.imgv_barcode);
     imgv_alarm = findViewById(R.id.imgv_alarm);
     imgv_menu = findViewById(R.id.imgv_menu);
     imgv_nextbar =findViewById(R.id.imgv_nextbar);
+    imgv_logo = findViewById(R.id.imgv_logo);
+
     tab_layout = findViewById(R.id.tab_layout);
     rl_logo = findViewById(R.id.rl_logo);
     ln_event = findViewById(R.id.ln_event);
     ln_fun_town = findViewById(R.id.ln_fun_town);
     ln_finance = findViewById(R.id.ln_finance);
     frame_back = findViewById(R.id.frame_back);
+    click_ad1 = findViewById(R.id.click_ad1);
+    click_ad2 = findViewById(R.id.click_ad2);
+    click_ad3 = findViewById(R.id.click_ad3);
+    tv_main_point = findViewById(R.id.tv_main_point);
 
 //클릭이벤트
     imgv_barcode.setOnClickListener(this);
@@ -68,6 +89,71 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     ln_event.setOnClickListener(this);
     ln_fun_town.setOnClickListener(this);
     ln_finance.setOnClickListener(this);
+
+    tv_main_point.setText(point +"P");
+    tv_main_point.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            Log.d("로그", "onClick: " + "클릭");
+            connActivity(new MypointActivity());
+           // Intent intent = new Intent(MainActivity.this,MypointActivity.class);
+        }
+    });
+
+        //1.Shared Preference 초기화
+        pref = getSharedPreferences("pref", Activity.MODE_PRIVATE);
+        editor = pref.edit();
+
+        //2. 저장해 둔 값 불러오기
+        point = pref.getInt("point",1000);
+
+        //3. 앱을 새로 켜면 이전에 저장해둔 값이 표시됨
+        editor.commit();
+
+    click_ad1.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            if(no1==0) {
+                pointChange(tv_main_point);
+                connect(new AdActivity1());
+                no1++;
+            }else if(no1>=1){
+                Toast.makeText(MainActivity.this, "이미 적립되었습니다.", Toast.LENGTH_SHORT).show();
+                connect(new AdActivity1());
+            }
+
+        }
+    });
+
+    click_ad2.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            if(no2==0){
+                pointChange(tv_main_point);
+                no2++;
+            }else if(no2>=1){
+                Toast.makeText(MainActivity.this, "이미 적립되었습니다.", Toast.LENGTH_SHORT).show();
+            }
+
+        }
+    });
+
+    click_ad3.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            if(no3==0){
+                pointChange(tv_main_point);
+                no3++;
+            }else if(no3>=1){
+                Toast.makeText(MainActivity.this, "이미 적립되었습니다.", Toast.LENGTH_SHORT).show();
+            }
+            }
+
+    });
+
+
+
+
 
 
     // 버튼 클릭시 이미지 전환
@@ -105,8 +191,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }else if(frame_back.getTag().toString().equals("2")){
                   Toast.makeText(MainActivity.this, "화면 준비중입니다.", Toast.LENGTH_SHORT).show();
             }else if(frame_back.getTag().toString().equals("3")){
-                Activity activity = new ExhibitActivity();
-                connActivity(activity);
+                connActivity(new ExhibitActivity());
             }else if(frame_back.getTag().toString().equals("4")){
                   Toast.makeText(MainActivity.this, "화면 준비중입니다.", Toast.LENGTH_SHORT).show();
             }
@@ -164,30 +249,49 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View v) {
         if(v.getId() == R.id.rl_logo ){
-           Activity activity = new MypointActivity();
-           connActivity(activity);
+           //Activity activity = new MypointActivity();
+           connActivity(new MypointActivity());
+            Log.d("로그", "onClick: " + "연결됨1");
+
 
         }else if(v.getId() == R.id.imgv_barcode ){
-            Activity activity = new BarcodeActivity();
-            connActivity(activity);
+            connActivity(new BarcodeActivity());
+            Log.d("로그", "onClick: " + "연결됨2");
+
 
         }else if(v.getId() == R.id.imgv_alarm) {
-            Activity activity = new AlarmActivity();
-            connActivity(activity);
+          Intent intent = new Intent(MainActivity.this, AlarmActivity.class);
+          startActivity(intent);
 
         } else  if(v.getId()== R.id.imgv_menu){
-            Activity activity = new MenuActivity();
-            connActivity(activity);
+            connActivity(new MenuActivity());
         }
     }
+    //Inetent 기본 메소드
+    public void connect(Activity activity){
+        Intent intent = new Intent(MainActivity.this,activity.getClass());
+        startActivity(intent);
 
-    //Intent 메소드
+    }
+
+    //Intent 포인트 전달 메소드
     public void connActivity(Activity activity){
 
        Intent intent = new Intent(MainActivity.this, activity.getClass());
-        startActivity(intent);
+       intent.putExtra("point", point);
+       startActivity(intent);
     }
-    
+
+    //포인트 변경 메소드 - 한번 클릭되면 다시는 선택되지 못함
+        public void pointChange(TextView text){
+
+        point += 10;
+        text.setText(point + "P");
+        Toast.makeText(this, "10포인트 적립이 요청되었습니다.", Toast.LENGTH_SHORT).show();
+        }
+
+
+
     
 
     //커스텀 액션 바

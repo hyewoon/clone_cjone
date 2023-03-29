@@ -13,16 +13,19 @@ import com.example.clone_cjone.menubar.MenuActivity;
 public class ExhibitActivity extends AppCompatActivity implements View.OnClickListener {
     ImageView before, home, menu;
 
+    int point;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_exhibit);
 
-        Intent intent = getIntent();
-
         before = findViewById(R.id.before);
         home =findViewById(R.id.home);
         menu =findViewById(R.id.menu);
+
+        Intent intent = getIntent();
+        point = intent.getIntExtra("point", -1);
 
         before.setOnClickListener(this);
         home.setOnClickListener(this);
@@ -38,6 +41,7 @@ public class ExhibitActivity extends AppCompatActivity implements View.OnClickLi
                 onBackPressed();
             }else if(v.getId() ==R.id.menu){
                 Intent intent = new Intent(ExhibitActivity.this, MenuActivity.class);
+                intent.getIntExtra("point",point);
                 startActivity(intent);
             }
         }

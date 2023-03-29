@@ -344,6 +344,7 @@
                 android:orientation="horizontal">
 
                 <LinearLayout
+                    android:id="@+id/click_ad1"
                     android:layout_marginRight="20dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -408,6 +409,7 @@
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/click_ad2"
                     android:layout_marginRight="20dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -474,6 +476,7 @@
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/click_ad3"
                     android:layout_marginRight="20dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"

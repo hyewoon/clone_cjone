@@ -24,10 +24,19 @@
             android:textColor="#000"
             android:layout_marginTop="14dp"
             android:textSize="15dp"
-            android:layout_width="0dp"
-            android:layout_weight="1"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="CJ 님 1,000P"/>
+            android:text="CJ 님 "/>
+
+        <TextView
+            android:id="@+id/barcode_point"
+            android:textColor="#000"
+            android:layout_marginTop="14dp"
+            android:textSize="15dp"
+            android:layout_weight="1"
+           android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="1,000P"/>
 
     <ImageView
         android:layout_margin="10dp"

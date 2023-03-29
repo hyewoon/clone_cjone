@@ -6,9 +6,11 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.example.clone_cjone.R;
 import com.example.clone_cjone.menubar.MenuActivity;
@@ -18,20 +20,28 @@ import java.util.ArrayList;
 public class MypointActivity extends AppCompatActivity implements View.OnClickListener {
 
     ImageView before, home, menu;
+    TextView mypoint_point;
     Intent intent;
     RecyclerView recv_mypoint;
+
+    int point = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mypoint);
 
-        intent = getIntent();
-
         before = findViewById(R.id.before);
         home = findViewById(R.id.home);
         menu = findViewById(R.id.menu);
-        recv_mypoint = findViewById(R.id.recv_mypoint);
+        mypoint_point = findViewById(R.id.mypoint_point);
+
+        intent = getIntent();
+        point= intent.getIntExtra("point", -1);
+        mypoint_point.setText(point +"P");
+        Log.d("로그", "onCreate: " + point);
+
+
 
         before.setOnClickListener(this);
         home.setOnClickListener(this);
